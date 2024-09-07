@@ -1,0 +1,22 @@
+<div class="container" [ngStyle]="{ 
+    'background-image': 'url(' + imageUrl + ')',
+    'background-repeat': 'no-repeat',
+    'background-size': 'cover',
+    'background-position': 'center center',
+    'width': '100vw',
+    'height': '100vh'
+  }">
+  <div *ngIf="userData" class="user-container">
+    <p class="warning">User ID cannot be changed</p>
+    <p>User ID: <input type="text" [(ngModel)]="userData.userId" [disabled]="true" /></p>
+    <p>Name: <input type="text" [(ngModel)]="userData.name" [disabled]="!updateMode" /></p>
+    <p>Email: <input type="text" [(ngModel)]="userData.email" [disabled]="!updateMode" /></p>
+    <button class="update-details-button" (click)="toggleUpdateMode()">Update Details</button>
+    <button class="change-password-button" (click)="changePasswordButtonClicked = !changePasswordButtonClicked">Change Password</button>
+    <div *ngIf="changePasswordButtonClicked">
+      <input [(ngModel)]="oldPassword" type="password" placeholder="Enter old password" />
+      <input [(ngModel)]="newPassword" type="password" placeholder="Enter new password" />
+      <button class="confirm-change-password-button" (click)="changePassword()">Confirm Change</button>
+    </div>
+  </div>
+</div>

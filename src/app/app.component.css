@@ -1,0 +1,11 @@
+.logout-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-danger {
+    background-color: #dc3545;
+    margin: 20px;
+    position: fixed;
+    right: 0;
+}

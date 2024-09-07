@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-5">
+            <h1 class="text-center mb-4">Register</h1>
+            <form>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="name" class="form-control" id="name" [(ngModel)]="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" (click)="register()">Register</button>
+            </form>
+            <p class="text-center mt-3">Already have an account?<a href="/login">Login</a></p>
+        </div>
+    </div>
+</div>

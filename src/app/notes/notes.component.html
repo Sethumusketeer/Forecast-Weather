@@ -1,0 +1,19 @@
+<div class="notes-page">
+    <h1>My Notes</h1>
+
+    <div class="add-note">
+      <input type="text" [(ngModel)]="newNote.content" placeholder="Type your note here..." />
+      <button (click)="addNote()">Add Note</button>
+    </div>
+
+    <div *ngFor="let note of notes; let i = index">
+      <div class="note">
+        <p *ngIf="!note.editMode">{{ note.content }}</p>
+        <input *ngIf="note.editMode" [(ngModel)]="note.content" />
+
+        <button *ngIf="note.editMode" (click)="updateNote(note, i)">Save</button>
+        <button *ngIf="!note.editMode" (click)="enableEdit(note)">Modify</button>
+        <button (click)="deleteNote(i)">Delete</button>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="container" [ngStyle]="{ 
+    'background-image': 'url(' + imageUrl + ')',
+    'background-repeat': 'no-repeat',
+    'background-size': 'cover',
+    'background-position': 'center center',
+    'width': '100vw',
+    'height': '100vh'
+  }">
+  <h1 class="welcome">Welcome, {{ userData.name }}</h1>
+  <div *ngIf="userWeather" class="weather-container">
+      <h2 class="location">Today's Weather in {{ userLocation }}</h2>
+      <p class="description">{{userWeather.description}}</p>
+      <p class="temperature">Temperature: {{userWeather.temperature}}°C</p>
+      <p class="temperatureF">TemperatureF: {{userWeather.temperatureF}}</p>
+      <p class="humidity">Humidity: {{userWeather.humidity}}%</p>
+      <p class="windSpeed">WindSpeed: {{userWeather.windSpeed}}km/h</p>
+      <p class="forecast">Forecast: {{userWeather.forecast}}</p>
+  </div>
+</div>

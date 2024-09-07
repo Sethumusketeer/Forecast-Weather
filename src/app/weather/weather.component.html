@@ -1,0 +1,53 @@
+<div class="container py-5" 
+  [ngStyle]="{ 
+    'background-image': 'url(' + imageUrl + ')',
+    'background-repeat': 'no-repeat',
+    'background-size': 'cover',
+    'background-position': 'center center'
+  }">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title mb-5">Weather Dashboard</h1>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Enter city name" [(ngModel)]="cityName" (ngModelChange)="onCityNameChange()" #cityInput>
+        <div class="list-group" *ngIf="similarCities.length > 0 && cityInput.value">
+          <button type="button" class="list-group-item list-group-item-action"
+                  *ngFor="let city of similarCities" (click)="selectCity(city)">
+            {{city}}
+          </button>
+        </div>
+        <input type="date" class="form-control mt-2" [(ngModel)]="startDate">
+      </div>
+      <button class="btn btn-primary" (click)="showWeather()">Find!</button>
+
+      <ul class="nav nav-tabs mt-5">
+        <li class="nav-item" *ngFor="let weather of filteredWeatherData; let idx=index">
+          <a class="nav-link" id="tab-{{idx}}" role="tab" [class.active]="activeTab === idx"
+            (click)="setActiveTab(idx)">{{ weather.date }}</a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane fade show" *ngFor="let weather of filteredWeatherData; let idx=index"
+          [class.active]="activeTab === idx">
+          <h2 class="mt-4">{{ weather.city }}</h2>
+          <h4 class="text-muted mb-4">{{ weather.description }}</h4>
+
+          <dl class="row">
+            <dt class="col-sm-4">Temperature</dt>
+            <dd class="col-sm-8">{{ weather.temperature }}°C</dd>
+
+            <dt class="col-sm-4">Humidity</dt>
+            <dd class="col-sm-8">{{ weather.humidity }}%</dd>
+
+            <dt class="col-sm-4">Wind Speed</dt>
+            <dd class="col-sm-8">{{ weather.windSpeed }} km/h</dd>
+
+            <dt class="col-sm-4">Forecast</dt>
+            <dd class="col-sm-8">{{ weather.forecast }}</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
